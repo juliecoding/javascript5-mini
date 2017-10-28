@@ -62,30 +62,50 @@ var customers = [{
 
 // Create and array of all email addresses
 // first without using underscore's pluck, then with it.
+function justTheEmails(arr) {
+  return arr.map(el => el.email);
+}
 
-
-
-
+_.pluck(customers, 'email');
 
 var inviteList1 = ['Ed', 'Fanny', 'Mildred', 'Alice', 'James'];
 var inviteList2 = ['Jake', 'Mildred', 'Jimmy', 'Ed', 'Franklin']
 
 
-  // Uh oh! We are having a party and two invite lists were created. 
+  // Uh oh! We are having a party and two invite lists were created.
   // Create one list of the people we want at the party (no duplicates).
   // Then remove all duplicates using _.union().
-
-
-
-
-
-
 
   var friendsOfJim = ['Tom', 'Carina','Rex', 'Jane', 'Greg', 'Nancy', 'Alison', 'Goose'];
   var friendsOfBetty = ['Burt', 'Dave', 'Tina', 'Biggie', 'Rex', 'Carina', 'Victoria', 'Tom', 'Nancy'];
 
+  function unify(arr1, arr2) {
+    var newArr = [];
+    for (var i = 0; i < arr1.length; i++) {
+      if (arr2.indexOf(arr1[i]) === -1) {
+        arr2.push(arr1[i]);
+      }
+    }
+    return arr2;
+  }
+
+  function meldAndEliminateDupes(inviteList1, inviteList2) {
+    var dupeFreeArr = [];
+    inviteList1 = inviteList1.concat(inviteList2);
+    for (var i = 0; i < inviteList1.length; i++) {
+      if (dupeFreeArr.indexOf(inviteList1[i]) === -1) {
+        dupeFreeArr.push(inviteList1[i]);
+      }
+    }
+    return dupeFreeArr;
+  }
+
+  var unionArray = _.union(friendsOfJim, friendsOfBetty);
+
 
   // Jim and Betty are having a party, but they only want to invite mutual friends. Create and array of mutual friends. First without using underscore, then using underscores _.intersection().
+
+  var intersected = _.intersection(friendsOfJim, friendsOfBetty);
 
 
 var purchases = [{
@@ -111,5 +131,13 @@ var purchases = [{
 // then do it again using _.groupBy()
 
 
+  console.log(_.groupBy(purchases, 'company'));
 
 
+  function groupEm(arr) {
+    var grouped = {};
+
+    for (var i = 0; i < purchases.length; i++) {
+      if (grouped.hasOwnProperty)
+    }
+  }
